@@ -6,17 +6,17 @@ with
 
     orders as (
         select
-            "ID" as order_id,
-            "USER_ID" as customer_id,
-            "ORDER_DATE" as order_date,
-            "STATUS" as order_status,
+            ID as order_id,
+            USER_ID as customer_id,
+            ORDER_DATE as order_date,
+            STATUS as order_status,
             case
-                when "STATUS" not in ('returned', 'return_pending')
-                then "ORDER_DATE"
+                when STATUS not in ('returned', 'return_pending')
+                then ORDER_DATE
             end as valid_order_date,
             row_number() over (
-                partition by "USER_ID"
-                order by "ORDER_DATE", "ID"
+                partition by USER_ID
+                order by ORDER_DATE, ID
                 ) as user_order_seq
         from source
     ),

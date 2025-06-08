@@ -43,8 +43,7 @@ with
             orders.order_id,
             orders.customer_id,
             orders.order_date,
-            coalesce(order_payments.amount, 0) as amount
-        from orders
+            cast(coalesce(order_payments.amount, 0) as NUMERIC) as amount        from orders
         left join order_payments
         on order_payments.order_id = orders.order_id
     )

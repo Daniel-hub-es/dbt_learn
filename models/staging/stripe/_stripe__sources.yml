@@ -26,7 +26,7 @@ sources:
           warn_after:
             count: 1
             period: day
-        loaded_at_field: 'CAST("CREATED" AS TIMESTAMP)' # Column must be TIMESTAMP instead of DATE column.'
+        loaded_at_field: 'CAST(CREATED AS TIMESTAMP)' # Column must be TIMESTAMP instead of DATE column.'
         columns:
           - name: '"ID"' # raw name column. src: id -> stg: payment_id
             description: "Primary key for payments data"

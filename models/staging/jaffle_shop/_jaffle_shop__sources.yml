@@ -38,7 +38,7 @@ sources:
           warn_after: #throws a warning when X time have passed from the last date
             count: 1
             period: day
-        loaded_at_field: 'CAST("ORDER_DATE" AS TIMESTAMP)' # culumn must be TIMESTAMP instead of DATE column.
+        loaded_at_field: 'CAST(ORDER_DATE AS TIMESTAMP)' # culumn must be TIMESTAMP instead of DATE column.
         columns:
           - name: '"ID"' # raw name column. src: id -> stg: order_id
             description: Primary key for customers data

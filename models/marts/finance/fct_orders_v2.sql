@@ -2,13 +2,55 @@
 
 With config as ephemeral model is interpolated as a cte in the upsteam model
 
-
-
 {{
     config(
         materialized='incremental',
         on_schema_change='append_new_columns',
         incremental_Stategy="append"
+    )
+}}
+
+{{
+    config(
+        materialized='incremental',
+        on_schema_change='append_new_columns',
+        unique_key='order_id'
+        incremental_Stategy="merge"
+    )
+}}
+
+{{
+    config(
+        materialized='incremental',
+        on_schema_change='append_new_columns',
+        unique_key='order_id'
+        incremental_Stategy="delete+insert"
+    )
+}}
+
+{{
+    config(
+        materialized='incremental',
+        on_schema_change='append_new_columns',
+        unique_key='order_id'
+        partition_:by={
+        "field": "order_date",
+        "data_type": "date",
+        "granularity": "day",
+        }
+        incremental_Stategy="insert_overwrite"
+    )
+}}
+
+{{
+    config(
+        materialized='incremental',
+        on_schema_change='append_new_columns',
+        unique_key='order_id'
+        incremental_Stategy="microbatch",
+        event_time='order_date',
+        begin'2025-02-13',
+        batch_size='day'
     )
 }}
 

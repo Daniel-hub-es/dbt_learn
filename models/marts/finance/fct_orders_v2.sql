@@ -7,7 +7,8 @@ With config as ephemeral model is interpolated as a cte in the upsteam model
 {{
     config(
         materialized='incremental',
-        on_schema_change='append_new_columns'
+        on_schema_change='append_new_columns',
+        incremental_Stategy="append"
     )
 }}
 

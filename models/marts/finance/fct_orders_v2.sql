@@ -2,14 +2,22 @@
 
 With config as ephemeral model is interpolated as a cte in the upsteam model
 
-#}
+
 
 {{
     config(
-        materialized='table' 
+        materialized='incremental',
+        on_schema_change='append_new_columns'
     )
 }}
 
+#}
+
+{{ 
+    config(
+        materialized='table'
+    )
+}}
 
 with
     -- load staging models
@@ -50,3 +58,8 @@ with
     )
 
 select * from final
+{% if is_incremental() %}
+    -- this filter will only be applied on an incremental run
+    where order_date > (select max(order_date) from {{ this }}) 
+{% endif %}
+order by order_date desc

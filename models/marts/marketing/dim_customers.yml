@@ -16,5 +16,5 @@ models:
       - name: number_of_orders
         data_type: integer
       - name: lifetime_value
-        data_type: float
+        data_type: float64
         

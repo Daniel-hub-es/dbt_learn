@@ -1,9 +1,9 @@
 models:
   - name: dim_customers
-    # config:
-    #   group: customers
-    #   contract:
-    #     enforced: true
+    config:
+      group: customers
+      contract:
+        enforced: true
     columns:
       - name: customer_id
         data_type: integer

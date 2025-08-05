@@ -12,6 +12,8 @@
 
 #}
 
+-- Adding info line for pr of change run states
+
 {{
     config(
         materialized='table'
